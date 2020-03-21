@@ -17,6 +17,10 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 char	*ft_uitoa(unsigned int n);
 int		ft_isalnum(int c);
@@ -53,5 +57,6 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_strdup(const char *src);
+int		get_next_line(int fd, char **line);
 
 #endif
