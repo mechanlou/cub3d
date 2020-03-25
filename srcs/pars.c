@@ -33,12 +33,35 @@ static int	check_get_fd(char *file)
 	return (fd);
 }
 
-bool cub_pars(char *file)
+static void	prep_tool(t_pars_tool check)
 {
-	int fd;
+	check->r = false;
+	check->s = false;
+	check->c = false;
+	check->f = false;
+	check->no = false;
+	check->so = false;
+	check->ea = false;
+	check->we = false;
+	check->map = false;
+}	
+
+bool		pars_file(int fd, t_params params)
+{
+	t_pars_tool tool;
+
+	prep_tool(tool);
+	(void)fd;
+	(void)params;
+	return (true);
+}
+
+t_params	cub_pars(char *file)
+{
+	int			fd;
+	t_params 	params;
 
 	if ((fd = check_get_fd(file) < 0))
 		return (false);
-	
-	return (true);
+	return (pars_file(fd, params));
 }
