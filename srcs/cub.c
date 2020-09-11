@@ -24,11 +24,10 @@ int			main (int argc, char **argv)
 {
 	t_params 	params;
 
-	dprintf(1, "Bienvunue dans Cub3D\n\n");
+	dprintf(1, "Bienvenue dans Cub3D\n\n");
 	if (!check_args(argc, argv))
 		return (0);
-	params = cub_pars(argv[1]);
-	if (!params.error)
+	if (cub_pars(argv[1], &params))
 	{
 		dprintf(1, "map bien\n");
 		if (argc == 3)

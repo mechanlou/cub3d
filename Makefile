@@ -14,7 +14,9 @@ NAME = Cub3D
 SRCS =	srcs/cub.c \
 		srcs/pars.c
 FLAGS = -Wall -Wextra -Werror
-HEADER = ./includes
+HEADER_FILE = ./includes
+HEADERS =	$(HEADER_FILE)/cub.h \
+			$(HEADER_FILE)/libft.h
 LIB_DIR = libft
 LIB_NAME = libft.a
 OBJS = ${SRCS:.c=.o}
@@ -27,8 +29,8 @@ OBJS = ${SRCS:.c=.o}
 $(NAME): $(OBJS) $(LIB_NAME)
 	clang $(OBJS) $(LIB_NAME) -o $(NAME)
 
-%.o: %.c
-	clang $(FLAGS) -c $< -o $@
+$(OBJS): %.o: %.c $(HEADERS)
+	clang $(FLAGS) -I$(HEADER_FILE) -c $< -o $@
 
 $(LIB_NAME):
 	cd $(LIB_DIR) && make all
