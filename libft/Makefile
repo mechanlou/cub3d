@@ -22,7 +22,7 @@ OBJS = ${SRCS:.c=.o}
 .PHONY: re 
 
 %o: %c $(HEADER)
-	gcc $(FLAGS) -I $(HEADER) -c $< -o $@
+	gcc $(FLAGS) -I $(HEADER) -c $< -o $@ -lm -lmlx -lXext -lX11
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
