@@ -1,6 +1,6 @@
 #include "cub.h"
 
-static bool check_extension(char *file, char *extension)
+static bool	check_extension(char *file, char *extension)
 {
 	int i;
 
@@ -13,7 +13,7 @@ static bool check_extension(char *file, char *extension)
 	}
 	if (ft_strncmp(file + ++i, extension, 4))
 		return (false);
-	return (true);	
+	return (true);
 }
 
 static int	check_get_fd(char *file)

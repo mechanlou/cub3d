@@ -20,7 +20,7 @@ static bool	check_word(char *str)
 	return (false);
 }
 
-static bool conv_rgb_int(char **tab, int *final_rgb)
+static bool	conv_rgb_int(char **tab, int *final_rgb)
 {
 	int	i;
 	int	j;
@@ -46,11 +46,11 @@ static bool conv_rgb_int(char **tab, int *final_rgb)
 	return (true);
 }
 
-static int cpy_rgb(int *rgb, char *str)
+static int	cpy_rgb(int *rgb, char *str)
 {
 	bool	ret;
 	int		i;
-	char  	**tab;
+	char	**tab;
 
 	tab = NULL;
 	while (str[0] == ' ')
@@ -65,24 +65,24 @@ static int cpy_rgb(int *rgb, char *str)
 	return (ret);
 }
 
-bool		cub_store_rgb(char *word, char *line, t_params *params, t_pars_tool *tool)
+bool		cub_store_rgb(char *word, char *line, t_params *p, t_pars_tool *t)
 {
 	int	i;
 
 	i = ft_strlen(word);
 	if (!ft_strncmp(word, "F", 2))
 	{
-		if (tool->floor == true)
+		if (t->floor == true)
 			return (false);
-		tool->floor = true;
-		return (cpy_rgb(&params->floor_rgb, line + i));
+		t->floor = true;
+		return (cpy_rgb(&p->floor_rgb, line + i));
 	}
 	else if (!ft_strncmp(word, "C", 2))
 	{
-		if (tool->ceiling == true)
+		if (t->ceiling == true)
 			return (false);
-		tool->ceiling = true;
-		return (cpy_rgb(&params->ceiling_rgb, line + i));
+		t->ceiling = true;
+		return (cpy_rgb(&p->ceiling_rgb, line + i));
 	}
 	return (true);
 }

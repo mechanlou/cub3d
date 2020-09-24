@@ -1,11 +1,5 @@
 #include "cub.h"
 
-// static void print_params(t_params params, t_pars_tool tool)
-// {
-// 	dprintf(1, "%d %d\n%s\n%s\n%s\n%s\n%s\n%d\n%d\n\n", params.window_xy[0], params.window_xy[1], params.path_ea, params.path_we, params.path_so, params.path_no, params.path_sprite, params.floor_rgb, params.ceiling_rgb);
-// 	dprintf(1, "%d %d %d %d %d\n", tool.ceiling, tool.floor, tool.window, tool.map_start, tool.map_end);
-// }
-
 /*
 ** word = ensemble de caractères séparés par des espaces
 */
@@ -21,7 +15,7 @@ static bool	free_page(char **str)
 	return (false);
 }
 
-char	*cub_get_next_word(char *str)
+char		*cub_get_next_word(char *str)
 {
 	int		i;
 	char	*word;
@@ -35,7 +29,7 @@ char	*cub_get_next_word(char *str)
 	return (word);
 }
 
-static int process_line(char *line, t_params *params, t_pars_tool *tool)
+static int	process_line(char *line, t_params *params, t_pars_tool *tool)
 {
 	char	*word;
 	int		ret;
@@ -79,7 +73,7 @@ static bool	check_pl_ret(int ret_pl, t_params params)
 	return (true);
 }
 
-bool	cub_pars_file(int fd, t_params *params)
+bool		cub_pars_file(int fd, t_params *params)
 {
 	t_pars_tool tool;
 	char		**page;

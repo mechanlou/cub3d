@@ -33,11 +33,11 @@ static bool	cpy_path(char **old, char *new)
 		*old = new;
 		return (true);
 	}
-	free(new);	
+	free(new);
 	return (false);
 }
 
-int	cub_store_wall_path(char *word, char *line, t_params *params)
+int			cub_store_wall_path(char *word, char *line, t_params *params)
 {
 	char	*new_path;
 	int		i;
@@ -64,7 +64,7 @@ int	cub_store_wall_path(char *word, char *line, t_params *params)
 	return (ret);
 }
 
-int	cub_store_window_r(char *line, t_params *params, t_pars_tool *tool)
+int			cub_store_window_r(char *line, t_params *params, t_pars_tool *tool)
 {
 	int		i;
 	char	*num;

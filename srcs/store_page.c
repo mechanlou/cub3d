@@ -61,13 +61,13 @@ char		**cub_store_page(int fd)
 	while ((ret_gnl = get_next_line(fd, &line)) > 0)
 	{
 		if (!(page = cub_store_line(line, page)))
-			return(NULL);
+			return (NULL);
 		free(line);
 	}
 	if (ret_gnl == -1)
 		return (free_stuff(line, NULL));
 	if (!(page = cub_store_line(line, page)))
-		return(free_stuff(line, NULL));
+		return (free_stuff(line, NULL));
 	free(line);
 	return (page);
 }

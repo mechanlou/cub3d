@@ -39,8 +39,6 @@ int		cub_prep_tool_param(t_pars_tool *check, t_params *params)
 
 /*
 ** checks if we have all the params (except map)
-**
-** the second one checks the map aw
 */
 
 bool	cub_check_all_tools(t_pars_tool to_check, t_params params)

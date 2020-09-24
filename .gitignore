@@ -5,3 +5,7 @@ Cub3D_map_generator
 a.out
 test*.c
 *.a
+Cub3D
+.vscode
+.vscode/*
+map*.cub

@@ -19,9 +19,9 @@ static void	check_args(int argc, char **argv)
 	}
 }
 
-int			main (int argc, char **argv)
+int			main(int argc, char **argv)
 {
-	t_params 	params;
+	t_params	params;
 
 	dprintf(1, "====================\nBienvenue dans Cub3D\n\n");
 	check_args(argc, argv);

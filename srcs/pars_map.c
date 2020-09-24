@@ -1,6 +1,6 @@
 #include "cub.h"
 
-static bool is_map_line(char *line)
+static bool	is_map_line(char *line)
 {
 	int		i;
 	bool	is_1;
@@ -24,7 +24,8 @@ static bool	check_char_surround(char **map, int x, int y)
 {
 	if (y == 0 || x == 0 || !map[y + 1] || !map[y][x + 1])
 		return (false);
-	if ((int)ft_strlen(map[y - 1]) - 1 < x || (int)ft_strlen(map[y + 1]) - 1 < x)
+	if ((int)ft_strlen(map[y - 1]) - 1 < x
+	|| (int)ft_strlen(map[y + 1]) - 1 < x)
 		return (false);
 	if (map[y][x + 1] == ' ' || map[y][x - 1] == ' '
 	|| map[y + 1][x] == ' ' || map[y - 1][x] == ' ')
@@ -45,9 +46,8 @@ static bool	pars_map(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == '0' || map[y][x] == '2'
-			|| map[y][x] == 'N' || map[y][x] == 'S'
-			|| map[y][x] == 'E' || map[y][x] == 'W')
+			if (map[y][x] == '0' || map[y][x] == '2' || map[y][x] == 'N'
+			|| map[y][x] == 'S' || map[y][x] == 'E' || map[y][x] == 'W')
 			{
 				if (!check_char_surround(map, x, y))
 					return (false);
@@ -62,7 +62,7 @@ static bool	pars_map(char **map)
 	return (nb_nsew == 1);
 }
 
-int		cub_store_map(char *line, t_params *params, t_pars_tool *tool)
+int			cub_store_map(char *line, t_params *params, t_pars_tool *tool)
 {
 	if (!*line)
 	{
