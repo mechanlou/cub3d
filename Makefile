@@ -12,8 +12,14 @@
 
 NAME = Cub3D
 SRCS =	srcs/cub.c \
-		srcs/pars.c
-FLAGS = -Wall -Wextra -Werror
+		srcs/pars.c \
+		srcs/pars_file.c \
+		srcs/pars_path_window.c \
+		srcs/pars_rgb.c \
+		srcs/pars_map.c \
+		srcs/store_page.c \
+		srcs/utils_tools_params.c
+FLAGS = -Wall -Wextra -Werror -g3
 HEADER_FILE = ./includes
 HEADERS =	$(HEADER_FILE)/cub.h \
 			$(HEADER_FILE)/libft.h
@@ -27,7 +33,7 @@ OBJS = ${SRCS:.c=.o}
 .PHONY: re
 
 $(NAME): $(OBJS) $(LIB_NAME)
-	clang $(OBJS) $(LIB_NAME) -o $(NAME)
+	clang $(OBJS) $(LIB_NAME) -o $(NAME) -lm -lmlx -lXext -lX11
 
 $(OBJS): %.o: %.c $(HEADERS)
 	clang $(FLAGS) -I$(HEADER_FILE) -c $< -o $@

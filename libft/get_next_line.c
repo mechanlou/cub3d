@@ -63,24 +63,24 @@ char	*gnl_new_line(char **line, char *buffer)
 	return (ft_substr(buffer, size_buffer + 1, BUFFER_SIZE));
 }
 
-int		gnl_care_rest(char *rest, char **line)
+int		gnl_care_rest(char **rest, char **line)
 {
-	if (rest == NULL)
+	if (*rest == NULL)
 	{
-		if (!(rest = ft_strdup("")))
+		if (!(*rest = ft_strdup("")))
 			return (-1);
 	}
-	if (ft_strlen(rest) > 0)
+	if (ft_strlen(*rest) > 0)
 	{
-		if (ft_strchr(rest, '\n'))
+		if (ft_strchr(*rest, '\n'))
 		{
-			if (!(rest = gnl_store_rest(rest, line)))
+			if (!(*rest = gnl_store_rest(*rest, line)))
 				return (-1);
 			return (1);
 		}
 		else
 		{
-			if (!(rest = gnl_store_rest(rest, line)))
+			if (!(*rest = gnl_store_rest(*rest, line)))
 				return (-1);
 		}
 	}
@@ -97,7 +97,7 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	*line = ft_strdup("");
 	buffer[0] = '\0';
-	if ((ret = gnl_care_rest(rest, line)) != 0)
+	if ((ret = gnl_care_rest(&rest, line)) != 0)
 		return (ret);
 	while (!ft_strchr(buffer, '\n'))
 	{

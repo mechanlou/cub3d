@@ -17,7 +17,7 @@ static int	get_size(char *str, char c)
 	int	size;
 
 	size = 0;
-	while (str[size] && str[size != c])
+	while (str[size] && str[size] != c)
 		size++;
 	return (size);
 }

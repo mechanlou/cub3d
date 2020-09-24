@@ -1,4 +1,4 @@
-#include "../includes/cub.h"
+#include "cub.h"
 
 static void	check_args(int argc, char **argv)
 {
@@ -23,7 +23,7 @@ int			main (int argc, char **argv)
 {
 	t_params 	params;
 
-	dprintf(1, "Bienvenue dans Cub3D\n\n");
+	dprintf(1, "====================\nBienvenue dans Cub3D\n\n");
 	check_args(argc, argv);
 	cub_pars(argv[1], &params);
 	dprintf(1, "map bien\n");
