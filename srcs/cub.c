@@ -27,8 +27,7 @@ int			main(int argc, char **argv)
 	check_args(argc, argv);
 	cub_pars(argv[1], &params);
 	dprintf(1, "map bien\n");
-	if (argc == 3)
-		dprintf(1, "mdr je sais pas faire les screenshots\n");
+	cub_the_game(params, argc);
 	cub_free_params(params);
 	return (EXIT_SUCCESS);
 }

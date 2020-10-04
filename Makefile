@@ -12,13 +12,17 @@
 
 NAME = Cub3D
 SRCS =	srcs/cub.c \
-		srcs/pars.c \
-		srcs/pars_file.c \
-		srcs/pars_path_window.c \
-		srcs/pars_rgb.c \
-		srcs/pars_map.c \
-		srcs/store_page.c \
-		srcs/utils_tools_params.c
+		srcs/parsing/pars.c \
+		srcs/parsing/pars_file.c \
+		srcs/parsing/pars_path_window.c \
+		srcs/parsing/pars_rgb.c \
+		srcs/parsing/pars_map.c \
+		srcs/parsing/store_page.c \
+		srcs/parsing/utils_tools_params.c \
+		srcs/gaming/key_hook.c \
+		srcs/gaming/ray_casting.c \
+		srcs/gaming/move_player.c \
+		srcs/gaming/the_game.c
 FLAGS = -Wall -Wextra -Werror -g3
 HEADER_FILE = ./includes
 HEADERS =	$(HEADER_FILE)/cub.h \

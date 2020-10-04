@@ -33,6 +33,22 @@ static int	check_get_fd(char *file)
 	return (fd);
 }
 
+static void	print_map(t_params params)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (params.map[y])
+	{
+		x = 0;
+		while (params.map[y][x])
+			dprintf(1, "%c", params.map[y][x++]);
+		dprintf(1, "\n");
+		y++;
+	}
+}
+
 bool		cub_pars(char *file, t_params *params)
 {
 	int			fd;
@@ -47,5 +63,6 @@ bool		cub_pars(char *file, t_params *params)
 		dprintf(1, "Error\nMap error\n");
 		exit(EXIT_FAILURE);
 	}
+	print_map(*params);
 	return (true);
 }

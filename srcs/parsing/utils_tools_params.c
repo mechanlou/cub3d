@@ -17,6 +17,8 @@ void	cub_free_params(t_params params)
 
 int		cub_prep_tool_param(t_pars_tool *check, t_params *params)
 {
+	if (!(params->mlx_ptr = mlx_init()))
+		return (EXIT_FAILURE);
 	check->window = false;
 	check->ceiling = false;
 	check->floor = false;
