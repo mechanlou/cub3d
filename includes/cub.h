@@ -10,8 +10,8 @@
 # include <string.h>
 # include <errno.h>
 # include <mlx.h>
-# include "key.h" 
 # include <math.h>
+# include "key.h" 
 
 # define FORWARD	K_W
 # define LEFT		K_A
@@ -32,6 +32,18 @@ typedef struct s_dda_vars
 	int		side;
 }				t_dda_vars;
 
+typedef struct	s_print_vars
+{
+	int		line_height;
+	int		start;
+	int		end;
+	char	face;
+	float	wall_x;
+	float	step;
+	int		tex_size[2];
+	int		tex_pos[2];
+	float	**sprites_dist;
+}				t_print_vars;
 
 typedef struct	s_player
 {
@@ -45,13 +57,12 @@ typedef struct	s_player
 
 typedef struct	s_textures
 {
-	char		**north;
-	char		**south;
-	char		**east;
-	char		**west;
-	char		**sprite;
+	int			**north;
+	int			**south;
+	int			**east;
+	int			**west;
+	int			**sprite;
 }				t_textures;
-
 
 typedef struct	s_params
 {
@@ -98,5 +109,9 @@ int				cub_key_press_hook(int key, t_params *params);
 void			cub_the_game(t_params params, int argc);
 int				cub_put_map(t_params params);
 void			cub_move_player(int key, t_params *params);
+int				cub_rgbtoi(int r, int g, int b);
+int				cub_free_tab(void **tab, int ret);
+bool			cub_init_textures(t_params *params);
+void			cub_init_player(t_params *params);
 
 #endif

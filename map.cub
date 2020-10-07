@@ -1,17 +1,19 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
-S mista.xpm
+NO mossy_cobble.xpm
+SO brick.xpm
+WE brick.xpm
+EA mossy_cobble.xpm
+S bonom.xpm
 
 R 600 400
 F 255,153,51
 C 0,0,153
 
 1111111111
+10000000011111111
+10000000002000001
+10000N00000000001
+10000000011111111
 1000000001
-1000000001
-10000N0001
 1000000001
 1000000001
 1111111111

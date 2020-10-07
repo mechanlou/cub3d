@@ -23,26 +23,19 @@ static bool	check_word(char *str)
 static bool	conv_rgb_int(char **tab, int *final_rgb)
 {
 	int	i;
-	int	j;
-	int	k;
-	int	number;
+	int	rgb[3];
 
 	i = 0;
-	k = 23;
 	while (tab[i])
 	{
-		number = ft_atoi(tab[i++]);
-		if (number > 255 || !check_word(tab[i - 1]))
+		if (i >= 3)
 			return (false);
-		j = 7;
-		while (j >= 0)
-		{
-			*final_rgb += (number / (int)pow(2, j)) * pow(2, k--);
-			number = number % (int)pow(2, j--);
-		}
+		rgb[i] = ft_atoi(tab[i]);
+		if (rgb[i] > 255 || !check_word(tab[i]))
+			return (false);
+		i++;
 	}
-	if (i != 3)
-		return (false);
+	*final_rgb = cub_rgbtoi(rgb[0], rgb[1], rgb[2]);
 	return (true);
 }
 

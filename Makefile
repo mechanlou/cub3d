@@ -19,9 +19,12 @@ SRCS =	srcs/cub.c \
 		srcs/parsing/pars_map.c \
 		srcs/parsing/store_page.c \
 		srcs/parsing/utils_tools_params.c \
+		srcs/parsing/utils.c \
 		srcs/gaming/key_hook.c \
 		srcs/gaming/ray_casting.c \
 		srcs/gaming/move_player.c \
+		srcs/gaming/init_textures.c \
+		srcs/gaming/init_player.c \
 		srcs/gaming/the_game.c
 FLAGS = -Wall -Wextra -Werror -g3
 HEADER_FILE = ./includes

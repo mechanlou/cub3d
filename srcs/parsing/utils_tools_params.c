@@ -2,17 +2,18 @@
 
 void	cub_free_params(t_params params)
 {
-	int	i;
-
 	free(params.path_sprite);
 	free(params.path_no);
 	free(params.path_so);
 	free(params.path_we);
 	free(params.path_ea);
-	i = 0;
-	while (params.map[i])
-		free(params.map[i++]);
-	free(params.map);
+	cub_free_tab((void **)params.map, 0);
+	cub_free_tab((void **)params.textures.north, 0);
+	cub_free_tab((void **)params.textures.south, 0);
+	cub_free_tab((void **)params.textures.east, 0);
+	cub_free_tab((void **)params.textures.west, 0);
+	cub_free_tab((void **)params.textures.sprite, 0);
+	mlx_destroy_window(params.mlx_ptr, params.win_ptr);
 }
 
 int		cub_prep_tool_param(t_pars_tool *check, t_params *params)
@@ -29,6 +30,11 @@ int		cub_prep_tool_param(t_pars_tool *check, t_params *params)
 	params->path_we = NULL;
 	params->path_so = NULL;
 	params->path_sprite = NULL;
+	params->textures.north = NULL;
+	params->textures.south = NULL;
+	params->textures.east = NULL;
+	params->textures.west = NULL;
+	params->textures.sprite = NULL;
 	params->ceiling_rgb = 0;
 	params->floor_rgb = 0;
 	params->window_xy[0] = 0;
