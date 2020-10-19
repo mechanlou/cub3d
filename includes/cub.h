@@ -42,7 +42,7 @@ typedef struct	s_print_vars
 	float	step;
 	int		tex_size[2];
 	int		tex_pos[2];
-	float	**sprites_dist;
+	float	**rel_sprites_pos;
 }				t_print_vars;
 
 typedef struct	s_player
@@ -113,5 +113,7 @@ int				cub_rgbtoi(int r, int g, int b);
 int				cub_free_tab(void **tab, int ret);
 bool			cub_init_textures(t_params *params);
 void			cub_init_player(t_params *params);
+void			cub_print_sprites(t_params params, t_print_vars vars, float *line_buff);
+float			cub_cast_ray(float window_x, t_params params, t_print_vars *vars);
 
 #endif

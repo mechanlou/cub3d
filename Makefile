@@ -22,6 +22,8 @@ SRCS =	srcs/cub.c \
 		srcs/parsing/utils.c \
 		srcs/gaming/key_hook.c \
 		srcs/gaming/ray_casting.c \
+		srcs/gaming/sprites.c \
+		srcs/gaming/show_game.c \
 		srcs/gaming/move_player.c \
 		srcs/gaming/init_textures.c \
 		srcs/gaming/init_player.c \

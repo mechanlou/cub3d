@@ -13,7 +13,8 @@ void	cub_free_params(t_params params)
 	cub_free_tab((void **)params.textures.east, 0);
 	cub_free_tab((void **)params.textures.west, 0);
 	cub_free_tab((void **)params.textures.sprite, 0);
-	mlx_destroy_window(params.mlx_ptr, params.win_ptr);
+	if (params.mlx_ptr && params.win_ptr)
+		mlx_destroy_window(params.mlx_ptr, params.win_ptr);
 }
 
 int		cub_prep_tool_param(t_pars_tool *check, t_params *params)

@@ -9,7 +9,7 @@ static void	check_args(int argc, char **argv)
 	}
 	else if (argc > 3)
 	{
-		dprintf(1, "%s\n", strerror(E2BIG));
+		dprintf(1, "Error\n%s\n", strerror(E2BIG));
 		exit(EXIT_FAILURE);
 	}
 	else if (argc == 3 && ft_strncmp(argv[2], "--save", 7))
