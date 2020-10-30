@@ -5,49 +5,31 @@
 **	wall_spot[1] = x position of the ray on this wall
 */
 
-static int	**get_texture_infos(t_params params, t_print_vars *vars)
-{
-	int		**texture;
-
-	if (vars->face == 'N')
-		texture = params.textures.north;
-	else if (vars->face == 'S')
-		texture = params.textures.south;
-	else if (vars->face == 'E')
-		texture = params.textures.east;
-	else
-		texture = params.textures.west;
-	vars->tex_size[0] = 0;
-	vars->tex_size[1] = 0;
-	while (texture[vars->tex_size[0]])
-		vars->tex_size[0]++;
-	while (texture[vars->tex_size[0] - 1][vars->tex_size[1]] > -1)
-		vars->tex_size[1]++;
-	return (texture);
-}
-
-
 static void print_surfaces(int x, t_params params, t_print_vars vars)
 {
 	int		i;
 	int		**texture;
 	float	tex_spot;
 
-	texture = get_texture_infos(params, &vars);
+	texture = cub_get_texture_infos(params, &vars);
 	vars.tex_pos[0] = (int)(vars.wall_x * (float)vars.tex_size[0]);
 	vars.step = (float)vars.tex_size[1] / (float)vars.line_height;
-	tex_spot = (vars.start - params.window_xy[1] / 2 + vars.line_height / 2) * vars.step;
+	tex_spot = (vars.start - params.window_xy[1] / 2 + vars.line_height / 2)
+		* vars.step;
 	i = 0;
 	while (i < vars.start)
-		mlx_pixel_put(params.mlx_ptr, params.win_ptr, x, i++, params.ceiling_rgb);
+		mlx_pixel_put(params.mlx_ptr, params.win_ptr,
+			x, i++, params.ceiling_rgb);
 	while (i < vars.end)
 	{
-		vars.tex_pos[1] = (int)tex_spot & (vars.tex_size[0] - 1);
+		vars.tex_pos[1] = (int)tex_spot;
 		tex_spot += vars.step;
-		mlx_pixel_put(params.mlx_ptr, params.win_ptr, x, i++, texture[vars.tex_pos[0]][vars.tex_pos[1]]);
+		mlx_pixel_put(params.mlx_ptr, params.win_ptr,
+			x, i++, texture[vars.tex_pos[0]][vars.tex_pos[1]]);
 	}
 	while (i < params.window_xy[1])
-		mlx_pixel_put(params.mlx_ptr, params.win_ptr, x, i++, params.floor_rgb);
+		mlx_pixel_put(params.mlx_ptr, params.win_ptr,
+			x, i++, params.floor_rgb);
 }
 
 static bool	put_line(int x, t_params params, float **buffer, t_print_vars *vars)
@@ -119,7 +101,7 @@ int			cub_put_map(t_params params)
 		return (-1);
 	}
 	sort_list(vars.rel_sprites_pos);
-	cub_print_sprites(params, vars, buffer);
+	cub_sprites(params, vars, buffer);
 	free(buffer);
 	return (0);
 }

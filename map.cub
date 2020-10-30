@@ -1,8 +1,8 @@
-NO mossy_cobble.xpm
-SO nootnoot.xpm
-WE brick.xpm
-EA brick.xpm
-S mossy_cobble.xpm
+NO textures/brick.xpm
+SO textures/redstone.xpm
+WE textures/wood.xpm
+EA textures/brick.xpm
+S  textures/jojo.xpm
 
 R 600 300
 F 255,153,51
@@ -11,9 +11,9 @@ C 0,0,153
 1111111111
 10000000011111111
 10000000000000001
-1000S000000000001
+10000S00000000001
 10000000011111111
 1000000001
-1000020201
+1000020001
 1010000001
 1111111111

@@ -64,6 +64,18 @@ int			cub_store_wall_path(char *word, char *line, t_params *params)
 	return (ret);
 }
 
+void		cub_check_screen_size(t_params *params)
+{
+	int sizex;
+	int sizey;
+
+	mlx_get_screen_size(params->mlx_ptr, &sizex, &sizey);
+	if (params->window_xy[0] > sizex)
+		params->window_xy[0] = sizex;
+	if (params->window_xy[1] > sizey)
+		params->window_xy[1] = sizey;
+}
+
 int			cub_store_window_r(char *line, t_params *params, t_pars_tool *tool)
 {
 	int		i;

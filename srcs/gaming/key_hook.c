@@ -15,9 +15,6 @@ static void rotate_player(int dir, t_params *params)
 	params->player.cam_x -= params->player.cam_y * sin(ROTATE_SPEED * dir);
 	params->player.cam_y *= cos(ROTATE_SPEED * dir);
 	params->player.cam_y += old_plane_x * sin(ROTATE_SPEED * dir);
-	// dprintf(1, "dir %f\n", acos((params->player.ori_x * 1 + params->player.ori_y * 0) / (sqrt(params->player.ori_x * params->player.ori_x + params->player.ori_y * params->player.ori_y) * sqrt(1 * 1 + 0 * 0)))/(2 * 3.14159265) * 360);
-	// dprintf(1, "cam %f\n", acos((1 * params->player.cam_x + 0 * params->player.cam_y) / (sqrt(1 * 1 + 0 * 0) * sqrt(params->player.cam_x * params->player.cam_x + params->player.cam_y * params->player.cam_y)))/(2 * 3.14159265) * 360);
-	// dprintf(1, "dir x cam %f\n", acos((params->player.ori_x * params->player.cam_x + params->player.ori_y * params->player.cam_y) / (sqrt(params->player.ori_x * params->player.ori_x + params->player.ori_y * params->player.ori_y) * sqrt(params->player.cam_x * params->player.cam_x + params->player.cam_y * params->player.cam_y)))/(2 * 3.14159265) * 360);
 }
 
 int 		cub_key_press_hook(int key, t_params *params)

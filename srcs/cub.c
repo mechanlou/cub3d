@@ -23,10 +23,8 @@ int			main(int argc, char **argv)
 {
 	t_params	params;
 
-	dprintf(1, "====================\nBienvenue dans Cub3D\n\n");
 	check_args(argc, argv);
 	cub_pars(argv[1], &params);
-	dprintf(1, "map bien\n");
 	cub_the_game(params, argc);
 	cub_free_params(params);
 	return (EXIT_SUCCESS);

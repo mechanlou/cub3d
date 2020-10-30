@@ -65,7 +65,7 @@ static int		all_sprites_calc(t_params params, t_print_vars *vars, int i)
 	return (sprite_size);
 }
 
-static void		s_print(t_print_vars v, t_params p, int s_size, float *l_buff)
+static void		s_print(t_print_vars v, t_params p, int s_size, float *l_buff, t_image *image)
 {
 	int y;
 	int x;
@@ -84,7 +84,7 @@ static void		s_print(t_print_vars v, t_params p, int s_size, float *l_buff)
 				v.tex_pos[1] = (((y * 256 - p.window_xy[1] * 128 + s_size
 					* 128) * v.tex_size[1]) / s_size) / 256;
 				if (p.textures.sprite[v.tex_pos[0]][v.tex_pos[1]] != 0)
-					mlx_pixel_put(p.mlx_ptr, p.win_ptr, x, y,
+					cub_pixel_to_image(image, x, y,
 						p.textures.sprite[v.tex_pos[0]][v.tex_pos[1]]);
 				y++;
 			}
@@ -93,7 +93,7 @@ static void		s_print(t_print_vars v, t_params p, int s_size, float *l_buff)
 	}
 }
 
-void			cub_sprites(t_params params, t_print_vars vars, float *l_buff)
+void			cub_screens_sprites(t_params params, t_print_vars vars, float *l_buff, t_image *image)
 {
 	int		i;
 	int		sprite_size;
@@ -102,7 +102,7 @@ void			cub_sprites(t_params params, t_print_vars vars, float *l_buff)
 	while (i >= 0)
 	{
 		sprite_size = all_sprites_calc(params, &vars, i);
-		s_print(vars, params, sprite_size, l_buff);
+		s_print(vars, params, sprite_size, l_buff, image);
 		i--;
 	}
 	free_tab(vars.rel_sprites_pos);

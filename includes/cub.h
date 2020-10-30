@@ -22,6 +22,30 @@
 # define ROTATE_SPEED	0.22
 # define MOVE_SPEED		0.2
 
+typedef	struct		s_bmp
+{
+	int				width;
+	int				height;
+	unsigned int	bytes_count;
+	int				width_in_bytes;
+	unsigned int	image_size;
+	unsigned int	bytes_size;
+	unsigned int	bfoffbits;
+	unsigned int	file_size;
+	unsigned int	biplanes;
+	unsigned char	header[54];
+	int				fd;
+}					t_bmp;
+
+typedef struct	s_image
+{
+	int		bpp;
+	void	*image;
+	int		endian;
+	int		line_size;
+	char	*data;
+}				t_image;
+
 typedef struct s_dda_vars
 {
 	float 	ray_dir[2];
@@ -43,6 +67,9 @@ typedef struct	s_print_vars
 	int		tex_size[2];
 	int		tex_pos[2];
 	float	**rel_sprites_pos;
+	int		start_end[2][2];
+	int		sprite_screen_x;
+	float	transform[2];
 }				t_print_vars;
 
 typedef struct	s_player
@@ -109,11 +136,19 @@ int				cub_key_press_hook(int key, t_params *params);
 void			cub_the_game(t_params params, int argc);
 int				cub_put_map(t_params params);
 void			cub_move_player(int key, t_params *params);
+int				cub_itorgb(int rgb, int pos);
 int				cub_rgbtoi(int r, int g, int b);
 int				cub_free_tab(void **tab, int ret);
 bool			cub_init_textures(t_params *params);
 void			cub_init_player(t_params *params);
-void			cub_print_sprites(t_params params, t_print_vars vars, float *line_buff);
+void			cub_sprites(t_params params, t_print_vars vars, float *line_buff);
+void			cub_screens_sprites(t_params params, t_print_vars vars, float *line_buff, t_image *image);
 float			cub_cast_ray(float window_x, t_params params, t_print_vars *vars);
+void			cub_check_screen_size(t_params *params);
+bool			cub_sc_l(int x, t_params params, float **buffer, t_print_vars *vars, t_image *image);
+void			cub_take_screenshot(t_params params);
+void			cub_pixel_to_image(t_image *image, int x, int y, int rgb);
+void			cub_save_bmp(t_params params, t_image image);
+int				**cub_get_texture_infos(t_params params, t_print_vars *vars);
 
 #endif

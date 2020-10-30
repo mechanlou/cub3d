@@ -38,7 +38,7 @@ static int	**cpy_img_tab(char *data, int *tab)
 				? cub_rgbtoi(data[i + 1], data[i + 2], data[i + 3])
 				: cub_rgbtoi(data[i + 2], data[i + 1], data[i + 0]);
 		}
-		picture[x][y] = -1;
+		picture[x][y] = -2147483648;
 		x++;
 	}
 	picture[x] = NULL;

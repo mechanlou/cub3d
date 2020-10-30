@@ -9,16 +9,20 @@ static void	error_case(t_params params, char *error)
 
 void		cub_the_game(t_params params, int argc)
 {
+	cub_check_screen_size(&params);
+	cub_init_player(&params);
+	if (!(cub_init_textures(&params)))
+		error_case(params, strerror(errno));
 	if (argc == 3)
-		dprintf(1, "mdr je sais pas faire les screenshots\n");
+	{
+		cub_take_screenshot(params);
+		write(1, "Cheese !  *click*\n", 18);
+	}
 	else
 	{
 		if (!(params.win_ptr = mlx_new_window(params.mlx_ptr,
-			params.window_xy[0], params.window_xy[1], "test ta race nan ?")))
+			params.window_xy[0], params.window_xy[1], "cub3D")))
 			error_case(params, "It's broken");
-		cub_init_player(&params);
-		if (!(cub_init_textures(&params)))
-			error_case(params, strerror(errno));
 		mlx_do_key_autorepeaton(params.mlx_ptr);
 		if (cub_put_map(params) == -1)
 			error_case(params, strerror(errno));

@@ -42,3 +42,24 @@ int		cub_rgbtoi(int r, int g, int b)
 	}
 	return (final_rgb);
 }
+
+int		**cub_get_texture_infos(t_params params, t_print_vars *vars)
+{
+	int		**texture;
+
+	if (vars->face == 'N')
+		texture = params.textures.north;
+	else if (vars->face == 'S')
+		texture = params.textures.south;
+	else if (vars->face == 'E')
+		texture = params.textures.east;
+	else
+		texture = params.textures.west;
+	vars->tex_size[0] = 0;
+	vars->tex_size[1] = 0;
+	while (texture[vars->tex_size[0]])
+		vars->tex_size[0]++;
+	while (texture[0][vars->tex_size[1]] != -2147483648)
+		vars->tex_size[1]++;
+	return (texture);
+}
