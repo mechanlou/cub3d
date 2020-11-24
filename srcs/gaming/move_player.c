@@ -1,8 +1,8 @@
 #include "cub.h"
 
-static void go_forward(t_params *params)
+static void	go_forward(t_params *params)
 {
-	char new_block;
+	char	new_block;
 
 	new_block = params->map[(int)params->player.pos_y]
 		[(int)(params->player.pos_x + params->player.ori_x * MOVE_SPEED)];
@@ -16,7 +16,7 @@ static void go_forward(t_params *params)
 
 static void	go_backward(t_params *params)
 {
-	char new_block;
+	char	new_block;
 
 	new_block = params->map[(int)params->player.pos_y]
 		[(int)(params->player.pos_x - params->player.ori_x * MOVE_SPEED)];
@@ -28,9 +28,9 @@ static void	go_backward(t_params *params)
 		params->player.pos_y -= params->player.ori_y * MOVE_SPEED;
 }
 
-static void go_right(float *side_vector, t_params *params)
+static void	go_right(float *side_vector, t_params *params)
 {
-	char 	new_block;
+	char	new_block;
 
 	new_block = params->map[(int)params->player.pos_y]
 		[(int)(params->player.pos_x + side_vector[0] * MOVE_SPEED)];
@@ -42,9 +42,9 @@ static void go_right(float *side_vector, t_params *params)
 		params->player.pos_y += side_vector[1] * MOVE_SPEED;
 }
 
-static void go_left(float *side_vector, t_params *params)
+static void	go_left(float *side_vector, t_params *params)
 {
-	char 	new_block;
+	char	new_block;
 
 	new_block = params->map[(int)params->player.pos_y]
 		[(int)(params->player.pos_x - side_vector[0] * MOVE_SPEED)];
@@ -56,7 +56,7 @@ static void go_left(float *side_vector, t_params *params)
 		params->player.pos_y -= side_vector[1] * MOVE_SPEED;
 }
 
-void	cub_move_player(int key, t_params *params)
+void		cub_move_player(int key, t_params *params)
 {
 	float	side_vector[2];
 

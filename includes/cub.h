@@ -22,7 +22,7 @@
 # define ROTATE_SPEED	0.22
 # define MOVE_SPEED		0.2
 
-typedef	struct		s_bmp
+typedef	struct	s_bmp
 {
 	int				width;
 	int				height;
@@ -35,7 +35,7 @@ typedef	struct		s_bmp
 	unsigned int	biplanes;
 	unsigned char	header[54];
 	int				fd;
-}					t_bmp;
+}				t_bmp;
 
 typedef struct	s_image
 {
@@ -46,7 +46,7 @@ typedef struct	s_image
 	char	*data;
 }				t_image;
 
-typedef struct s_dda_vars
+typedef struct	s_dda_vars
 {
 	float 	ray_dir[2];
 	int 	curr_square[2];
@@ -68,6 +68,7 @@ typedef struct	s_print_vars
 	int		tex_pos[2];
 	float	**rel_sprites_pos;
 	int		start_end[2][2];
+	int		sprite_size;
 	int		sprite_screen_x;
 	float	transform[2];
 }				t_print_vars;
@@ -123,9 +124,9 @@ bool			cub_check_all_tools(t_pars_tool to_check, t_params params);
 void			cub_free_params(t_params params);
 char			*cub_get_next_word(char *str);
 bool			cub_pars_file(int fd, t_params *params);
-bool			cub_store_rgb(char *word, char *line, t_params *params, t_pars_tool *tool);
+bool			cub_store_rgb(char *w, char *l, t_params *p, t_pars_tool *t);
 int				cub_store_wall_path(char *word, char *line, t_params *params);
-int				cub_store_window_r(char *line, t_params *params, t_pars_tool *tool);
+int				cub_store_window_r(char *l, t_params *p, t_pars_tool *t);
 int				cub_store_map(char *line, t_params *params, t_pars_tool *tool);
 bool			cub_check_all_tools(t_pars_tool to_check, t_params params);
 int				cub_free_all(const int number, ...);
@@ -141,14 +142,15 @@ int				cub_rgbtoi(int r, int g, int b);
 int				cub_free_tab(void **tab, int ret);
 bool			cub_init_textures(t_params *params);
 void			cub_init_player(t_params *params);
-void			cub_sprites(t_params params, t_print_vars vars, float *line_buff);
-void			cub_screens_sprites(t_params params, t_print_vars vars, float *line_buff, t_image *image);
-float			cub_cast_ray(float window_x, t_params params, t_print_vars *vars);
+void			cub_sprites(t_params params, t_print_vars vars, float *l_buff);
+void			cub_scr_spr(t_params p, t_print_vars v, float *b, t_image *i);
+float			cub_cast_ray(float win_x, t_params p, t_print_vars *v);
 void			cub_check_screen_size(t_params *params);
-bool			cub_sc_l(int x, t_params params, float **buffer, t_print_vars *vars, t_image *image);
+bool			cub_sc_l(t_params p, float **b, t_print_vars *v, t_image *i);
 void			cub_take_screenshot(t_params params);
 void			cub_pixel_to_image(t_image *image, int x, int y, int rgb);
 void			cub_save_bmp(t_params params, t_image image);
 int				**cub_get_texture_infos(t_params params, t_print_vars *vars);
+float			**cub_add_sprite_d(t_dda_vars d, t_params p, t_print_vars v);
 
 #endif

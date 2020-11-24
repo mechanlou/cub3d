@@ -100,11 +100,12 @@ static void floor_to_image(int x, t_params p, t_print_vars v, t_image *image)
 	}
 }
 
-bool		cub_sc_l(int x, t_params p, float **b, t_print_vars *v, t_image *i)
+bool		cub_sc_l(t_params p, float **b, t_print_vars *v, t_image *i)
 {
 	float			wall_dist;
 
-	wall_dist = cub_cast_ray(2 * (float)x / p.window_xy[0] - 1, p, v);
+	wall_dist = cub_cast_ray(
+		2 * (float)v->sprite_size / p.window_xy[0] - 1, p, v);
 	if (wall_dist == -1)
 		return (false);
 	v->line_height = (int)(p.window_xy[1] / wall_dist);
@@ -114,9 +115,9 @@ bool		cub_sc_l(int x, t_params p, float **b, t_print_vars *v, t_image *i)
 	v->end = v->line_height / 2 + p.window_xy[1] / 2;
 	if (v->end > p.window_xy[1] || v->end < 0)
 		v->end = p.window_xy[1];
-	ceiling_to_image(x, p, v->start, i);
-	walls_to_image(x, p, *v, i);
-	floor_to_image(x, p, *v, i);
-	b[0][x] = wall_dist;
+	ceiling_to_image(v->sprite_size, p, v->start, i);
+	walls_to_image(v->sprite_size, p, *v, i);
+	floor_to_image(v->sprite_size, p, *v, i);
+	b[0][v->sprite_size] = wall_dist;
 	return (true);
 }

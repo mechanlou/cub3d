@@ -31,6 +31,7 @@ SRCS =	srcs/cub.c \
 		srcs/gaming/create_image.c \
 		srcs/gaming/take_screenshot.c \
 		srcs/gaming/sprites_screenshot.c \
+		srcs/gaming/add_sprite_dist.c \
 		srcs/gaming/the_game.c
 FLAGS = -Wall -Wextra -Werror -g3
 HEADER_FILE = ./includes

@@ -2,8 +2,8 @@
 
 static void rotate_player(int dir, t_params *params)
 {
-	float old_dir_x;
-	float old_plane_x;
+	float	old_dir_x;
+	float	old_plane_x;
 	
 	old_dir_x = params->player.ori_x;
 	params->player.ori_x *= cos(ROTATE_SPEED * dir);
@@ -19,9 +19,6 @@ static void rotate_player(int dir, t_params *params)
 
 int 		cub_key_press_hook(int key, t_params *params)
 {
-	(void)key;
-	(void)*params;
-
 	if (key == K_ARROW_RIGHT)
 	{
 		rotate_player(1, params);
@@ -42,7 +39,6 @@ int 		cub_key_press_hook(int key, t_params *params)
 
 int 		cub_key_release_hook(int key, t_params *params)
 {
-	(void)*params;
 	if (key == K_ESCAPE)
 	{
 		cub_free_params(*params);

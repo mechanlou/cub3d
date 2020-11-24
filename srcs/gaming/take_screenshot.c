@@ -43,21 +43,24 @@ static int		show_screenshot(t_params params, t_image *image)
 	x = 0;
 	ret = true;
 	while (x < params.window_xy[0] && ret == true)
-		ret = cub_sc_l(x++, params, &buffer, &vars, image);
+	{
+		ret = cub_sc_l(params, &buffer, &vars, image);
+		vars.sprite_size = x++;
+	}
 	if (ret == false)
 	{
 		free(buffer);
 		return (-1);
 	}
 	sort_list(vars.rel_sprites_pos);
-	cub_screens_sprites(params, vars, buffer, image);
+	cub_scr_spr(params, vars, buffer, image);
 	free(buffer);
 	return (0);
 }
 
 void			cub_take_screenshot(t_params params)
 {
-	t_image image;
+	t_image	image;
 
 	image.image = mlx_new_image(params.mlx_ptr, params.window_xy[0],
 		params.window_xy[1]);

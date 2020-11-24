@@ -32,26 +32,27 @@ static void print_surfaces(int x, t_params params, t_print_vars vars)
 			x, i++, params.floor_rgb);
 }
 
-static bool	put_line(int x, t_params params, float **buffer, t_print_vars *vars)
+static bool	put_line(int x, t_params params, float **buffer, t_print_vars *v)
 {
-	float			wall_dist;
+	float	wall_dist;
 
-	wall_dist = cub_cast_ray(2 * (float)x / params.window_xy[0] - 1, params, vars);
+	wall_dist = cub_cast_ray(
+		2 * (float)x / params.window_xy[0] - 1, params, v);
 	if (wall_dist == -1)
 		return (false);
-	vars->line_height = (int)(params.window_xy[1] / wall_dist);
-	vars->start = -vars->line_height / 2 + params.window_xy[1] / 2;
-	if (vars->start < 0)
-		vars->start = 0;
-	vars->end = vars->line_height / 2 + params.window_xy[1] / 2;
-	if (vars->end > params.window_xy[1] || vars->end < 0)
-		vars->end = params.window_xy[1];
-	print_surfaces(x, params, *vars);
+	v->line_height = (int)(params.window_xy[1] / wall_dist);
+	v->start = -v->line_height / 2 + params.window_xy[1] / 2;
+	if (v->start < 0)
+		v->start = 0;
+	v->end = v->line_height / 2 + params.window_xy[1] / 2;
+	if (v->end > params.window_xy[1] || v->end < 0)
+		v->end = params.window_xy[1];
+	print_surfaces(x, params, *v);
 	buffer[0][x] = wall_dist;
 	return (true);
 }
 
-static void		sort_list(float **tab)
+static void	sort_list(float **tab)
 {
 	int		i;
 	float	dist[2];
