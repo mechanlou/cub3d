@@ -1,18 +1,5 @@
 #include "cub.h"
 
-static float	**free_tab(float **tab)
-{
-	int i;
-	
-	i = 0;
-	if (!tab)
-		return (NULL);
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
-	return (NULL);
-}
-
 static int		init_sprites_infos(t_params params, t_print_vars *vars)
 {
 	int i;
@@ -35,10 +22,9 @@ static int		init_sprites_infos(t_params params, t_print_vars *vars)
 **	start_end[a][b] --> a à 0 = start / 1 = end;  b à 0 = x / 1 = y;
 */
 
-static int		all_sprites_calc(t_params params, t_print_vars *vars, int i)
+static void		sprites_calc_bis(t_params params, t_print_vars *vars, int i)
 {
 	float	inv_det;
-	int		sprite_size;
 
 	inv_det = 1.0 / (params.player.cam_x * params.player.ori_y
 		- params.player.ori_x * params.player.cam_y);
@@ -49,6 +35,13 @@ static int		all_sprites_calc(t_params params, t_print_vars *vars, int i)
 		* vars->rel_sprites_pos[i][1]);
 	vars->sprite_screen_x = (int)(params.window_xy[0] / 2)
 		* (1 + vars->transform[0] / vars->transform[1]);
+}
+
+static int		all_sprites_calc(t_params params, t_print_vars *vars, int i)
+{
+	int		sprite_size;
+
+	sprites_calc_bis(params, vars, i);
 	sprite_size = abs((int)(params.window_xy[1] / vars->transform[1]));
 	vars->start_end[0][1] = -sprite_size / 2 + params.window_xy[1] / 2;
 	vars->start_end[0][1] = (vars->start_end[0] < 0)
@@ -104,5 +97,5 @@ void			cub_scr_spr(t_params p, t_print_vars v, float *l_b, t_image *i)
 		s_print(v, p, l_b, i);
 		j--;
 	}
-	free_tab(v.rel_sprites_pos);
+	cub_free_ftab(v.rel_sprites_pos);
 }

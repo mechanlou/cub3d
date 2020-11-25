@@ -1,9 +1,9 @@
 #include "cub.h"
 
-static float	**free_tab(float **tab)
+float	**free_tab(float **tab)
 {
 	int i;
-	
+
 	i = 0;
 	if (!tab)
 		return (NULL);
@@ -15,7 +15,7 @@ static float	**free_tab(float **tab)
 
 float	**cub_core_function(bool already, t_print_vars vars, int s, float *new)
 {
-	float 	**new_dists;
+	float	**new_dists;
 	int		i;
 
 	if (already)
@@ -39,7 +39,7 @@ float	**cub_add_sprite_d(t_dda_vars dda, t_params p, t_print_vars vars)
 	bool	already;
 	int		size;
 	float	new_xy[2];
-	
+
 	size = 0;
 	new_xy[0] = dda.curr_square[0] - p.player.pos_x;
 	new_xy[1] = dda.curr_square[1] - p.player.pos_y;

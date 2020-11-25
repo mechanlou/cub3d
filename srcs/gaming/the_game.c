@@ -3,7 +3,7 @@
 static void	error_case(t_params params, char *error)
 {
 	cub_free_params(params);
-	dprintf(1, "Error\n%s\n", error);
+	ft_printf("Error\n%s\n", error);
 	exit(EXIT_FAILURE);
 }
 

@@ -11,7 +11,7 @@
 # include <errno.h>
 # include <mlx.h>
 # include <math.h>
-# include "key.h" 
+# include "key.h"
 
 # define FORWARD	K_W
 # define LEFT		K_A
@@ -48,8 +48,8 @@ typedef struct	s_image
 
 typedef struct	s_dda_vars
 {
-	float 	ray_dir[2];
-	int 	curr_square[2];
+	float	ray_dir[2];
+	int		curr_square[2];
 	float	side_dist[2];
 	float	delta_dist[2];
 	int		step[2];
@@ -95,13 +95,13 @@ typedef struct	s_textures
 typedef struct	s_params
 {
 	void		*mlx_ptr;
-    void		*win_ptr;
+	void		*win_ptr;
 	int			window_xy[2];
-	char	 	*path_no;
-	char	 	*path_so;
-	char	 	*path_ea;
-	char	 	*path_we;
-	char	 	*path_sprite;
+	char		*path_no;
+	char		*path_so;
+	char		*path_ea;
+	char		*path_we;
+	char		*path_sprite;
 	int			floor_rgb;
 	int			ceiling_rgb;
 	char		**map;
@@ -152,5 +152,6 @@ void			cub_pixel_to_image(t_image *image, int x, int y, int rgb);
 void			cub_save_bmp(t_params params, t_image image);
 int				**cub_get_texture_infos(t_params params, t_print_vars *vars);
 float			**cub_add_sprite_d(t_dda_vars d, t_params p, t_print_vars v);
+float			**cub_free_ftab(float **tab);
 
 #endif

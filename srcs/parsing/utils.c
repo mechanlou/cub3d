@@ -1,5 +1,18 @@
 #include "cub.h"
 
+float	**cub_free_ftab(float **tab)
+{
+	int i;
+
+	i = 0;
+	if (!tab)
+		return (NULL);
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+	return (NULL);
+}
+
 int		cub_free_tab(void **tab, int ret)
 {
 	int i;

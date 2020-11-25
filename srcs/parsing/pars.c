@@ -22,12 +22,12 @@ static int	check_get_fd(char *file)
 
 	if (!check_extension(file, "cub"))
 	{
-		dprintf(1, "Error\n%s\n", strerror(errno));
+		ft_printf("Error\n%s\n", strerror(errno));
 		return (-1);
 	}
 	if ((fd = open(file, O_RDONLY)) < 0)
 	{
-		dprintf(1, "Error\n%s\n", strerror(errno));
+		ft_printf("Error\n%s\n", strerror(errno));
 		return (-1);
 	}
 	return (fd);
@@ -39,12 +39,12 @@ bool		cub_pars(char *file, t_params *params)
 
 	if ((fd = check_get_fd(file)) <= 0)
 	{
-		dprintf(1, "Error\n%s\n", strerror(errno));
+		ft_printf("Error\n%s\n", strerror(errno));
 		exit(EXIT_FAILURE);
 	}
 	if (!cub_pars_file(fd, params))
 	{
-		dprintf(1, "Error\nMap error\n");
+		ft_printf("Error\nMap error\n");
 		exit(EXIT_FAILURE);
 	}
 	return (true);

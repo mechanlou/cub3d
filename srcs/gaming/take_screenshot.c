@@ -26,7 +26,6 @@ static void		sort_list(float **tab)
 			}
 			i++;
 		}
-		
 	}
 }
 
@@ -69,7 +68,7 @@ void			cub_take_screenshot(t_params params)
 	if (show_screenshot(params, &image))
 	{
 		cub_free_params(params);
-		dprintf(1, "Error\n%s\n", strerror(errno));
+		ft_printf("Error\n%s\n", strerror(errno));
 		exit(EXIT_FAILURE);
 	}
 	cub_save_bmp(params, image);

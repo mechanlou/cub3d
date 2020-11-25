@@ -5,7 +5,7 @@
 **	wall_spot[1] = x position of the ray on this wall
 */
 
-static void ceiling_to_image(int x, t_params params, int start, t_image *image)
+static void	ceiling_to_image(int x, t_params params, int start, t_image *image)
 {
 	int		i;
 	char	ceiling_color[4];
@@ -49,7 +49,7 @@ void		cub_pixel_to_image(t_image *image, int x, int y, int rgb)
 		image->data[x * 4 + image->line_size * y + 1] = (rgb >> (1 * 8) & 255);
 		image->data[x * 4 + image->line_size * y + 2] = (rgb >> (2 * 8) & 255);
 		image->data[x * 4 + image->line_size * y + 3] = 0;
-	}	
+	}
 }
 
 static void	walls_to_image(int x, t_params p, t_print_vars v, t_image *image)
@@ -71,7 +71,7 @@ static void	walls_to_image(int x, t_params p, t_print_vars v, t_image *image)
 	}
 }
 
-static void floor_to_image(int x, t_params p, t_print_vars v, t_image *image)
+static void	floor_to_image(int x, t_params p, t_print_vars v, t_image *image)
 {
 	int		i;
 	char	floor_color[4];

@@ -6,11 +6,11 @@ static void	go_forward(t_params *params)
 
 	new_block = params->map[(int)params->player.pos_y]
 		[(int)(params->player.pos_x + params->player.ori_x * MOVE_SPEED)];
-	if (new_block != '1')	
+	if (new_block != '1')
 		params->player.pos_x += params->player.ori_x * MOVE_SPEED;
 	new_block = params->map[(int)(params->player.pos_y
 		+ params->player.ori_y * MOVE_SPEED)][(int)params->player.pos_x];
-	if (new_block != '1')	
+	if (new_block != '1')
 		params->player.pos_y += params->player.ori_y * MOVE_SPEED;
 }
 
@@ -20,11 +20,11 @@ static void	go_backward(t_params *params)
 
 	new_block = params->map[(int)params->player.pos_y]
 		[(int)(params->player.pos_x - params->player.ori_x * MOVE_SPEED)];
-	if (new_block != '1')	
+	if (new_block != '1')
 		params->player.pos_x -= params->player.ori_x * MOVE_SPEED;
 	new_block = params->map[(int)(params->player.pos_y
 		- params->player.ori_y * MOVE_SPEED)][(int)params->player.pos_x];
-	if (new_block != '1')	
+	if (new_block != '1')
 		params->player.pos_y -= params->player.ori_y * MOVE_SPEED;
 }
 
@@ -34,11 +34,11 @@ static void	go_right(float *side_vector, t_params *params)
 
 	new_block = params->map[(int)params->player.pos_y]
 		[(int)(params->player.pos_x + side_vector[0] * MOVE_SPEED)];
-	if (new_block != '1')	
+	if (new_block != '1')
 		params->player.pos_x += side_vector[0] * MOVE_SPEED;
 	new_block = params->map[(int)(params->player.pos_y
 		+ side_vector[1] * MOVE_SPEED)][(int)params->player.pos_x];
-	if (new_block != '1')	
+	if (new_block != '1')
 		params->player.pos_y += side_vector[1] * MOVE_SPEED;
 }
 
@@ -48,11 +48,11 @@ static void	go_left(float *side_vector, t_params *params)
 
 	new_block = params->map[(int)params->player.pos_y]
 		[(int)(params->player.pos_x - side_vector[0] * MOVE_SPEED)];
-	if (new_block != '1')	
+	if (new_block != '1')
 		params->player.pos_x -= side_vector[0] * MOVE_SPEED;
 	new_block = params->map[(int)(params->player.pos_y
 		- side_vector[1] * MOVE_SPEED)][(int)params->player.pos_x];
-	if (new_block != '1')	
+	if (new_block != '1')
 		params->player.pos_y -= side_vector[1] * MOVE_SPEED;
 }
 

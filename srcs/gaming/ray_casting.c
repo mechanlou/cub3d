@@ -1,6 +1,6 @@
 #include "cub.h"
 
-static void		init_dda_vars(float window_x, t_dda_vars *dda, t_params params)
+static void	init_dda_vars(float window_x, t_dda_vars *dda, t_params params)
 {
 	dda->ray_dir[0] = params.player.ori_x + params.player.cam_x * window_x;
 	dda->ray_dir[1] = params.player.ori_y + params.player.cam_y * window_x;
@@ -24,7 +24,7 @@ static void		init_dda_vars(float window_x, t_dda_vars *dda, t_params params)
 	dda->step[1] = (dda->ray_dir[1] < 0) ? -1 : 1;
 }
 
-static int		check_hit(t_dda_vars *dda, t_params params, t_print_vars *vars)
+static int	check_hit(t_dda_vars *dda, t_params params, t_print_vars *vars)
 {
 	if (dda->side_dist[0] < dda->side_dist[1])
 	{
@@ -48,18 +48,10 @@ static int		check_hit(t_dda_vars *dda, t_params params, t_print_vars *vars)
 	return (0);
 }
 
-float		cub_cast_ray(float window_x, t_params params, t_print_vars *vars)
+float		calc_dist(t_dda_vars dda, t_params params, t_print_vars *vars)
 {
-	t_dda_vars	dda;
-	int			hit;
-	float		wall_dist;
+	float wall_dist;
 
-	init_dda_vars(window_x, &dda, params);
-	hit = 0;
-	while (hit == 0)
-		hit = check_hit(&dda, params, vars);
-	if (hit == -1)
-		return (-1);
 	if (dda.side == 0)
 	{
 		wall_dist = (dda.curr_square[0] - params.player.pos_x +
@@ -74,6 +66,22 @@ float		cub_cast_ray(float window_x, t_params params, t_print_vars *vars)
 		vars->face = (dda.ray_dir[1] < 0) ? 'N' : 'S';
 		vars->wall_x = params.player.pos_x + wall_dist * dda.ray_dir[0];
 	}
+	return (wall_dist);
+}
+
+float		cub_cast_ray(float window_x, t_params params, t_print_vars *vars)
+{
+	t_dda_vars	dda;
+	int			hit;
+	float		wall_dist;
+
+	init_dda_vars(window_x, &dda, params);
+	hit = 0;
+	while (hit == 0)
+		hit = check_hit(&dda, params, vars);
+	if (hit == -1)
+		return (-1);
+	wall_dist = calc_dist(dda, params, vars);
 	vars->wall_x -= floor(vars->wall_x);
 	return (wall_dist);
 }

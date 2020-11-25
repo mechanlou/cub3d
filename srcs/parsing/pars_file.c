@@ -61,7 +61,7 @@ static bool	check_pl_ret(int ret_pl, t_params params)
 {
 	if (ret_pl == -1)
 	{
-		dprintf(1, "Error\n%s\n", strerror(errno));
+		ft_printf("Error\n%s\n", strerror(errno));
 		cub_free_params(params);
 		exit(EXIT_FAILURE);
 	}
@@ -84,7 +84,7 @@ bool		cub_pars_file(int fd, t_params *params)
 		return (false);
 	if (!(page = cub_store_page(fd)))
 	{
-		dprintf(1, "Error\n%s\n", strerror(errno));
+		ft_printf("Error\n%s\n", strerror(errno));
 		cub_free_params(*params);
 		exit(EXIT_FAILURE);
 	}

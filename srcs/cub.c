@@ -4,17 +4,17 @@ static void	check_args(int argc, char **argv)
 {
 	if (argc < 2)
 	{
-		dprintf(1, "Error\nNo argument.\n");
+		ft_printf("Error\nNo argument.\n");
 		exit(EXIT_FAILURE);
 	}
 	else if (argc > 3)
 	{
-		dprintf(1, "Error\n%s\n", strerror(E2BIG));
+		ft_printf("Error\n%s\n", strerror(E2BIG));
 		exit(EXIT_FAILURE);
 	}
 	else if (argc == 3 && ft_strncmp(argv[2], "--save", 7))
 	{
-		dprintf(1, "Error\nChing Chong, second argument is wrong.\n");
+		ft_printf("Error\nChing Chong, second argument is wrong.\n");
 		exit(EXIT_FAILURE);
 	}
 }

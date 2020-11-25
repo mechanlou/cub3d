@@ -5,7 +5,7 @@
 **	wall_spot[1] = x position of the ray on this wall
 */
 
-static void print_surfaces(int x, t_params params, t_print_vars vars)
+static void	print_surfaces(int x, t_params params, t_print_vars vars)
 {
 	int		i;
 	int		**texture;
@@ -78,7 +78,6 @@ static void	sort_list(float **tab)
 			}
 			i++;
 		}
-		
 	}
 }
 
