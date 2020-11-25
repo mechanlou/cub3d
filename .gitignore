@@ -6,7 +6,6 @@ a.out
 test*.c
 *.a
 Cub3D
-.vscode
-.vscode/*
+capture.bmp
 map*.cub
 mista.xpm
