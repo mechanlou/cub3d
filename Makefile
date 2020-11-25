@@ -39,6 +39,8 @@ HEADERS =	$(HEADER_FILE)/cub.h \
 			$(HEADER_FILE)/libft.h
 LIB_DIR = libft
 LIB_NAME = libft.a
+MLX_DIR = mlx
+MLX_NAME = libmlx_Linux.a
 OBJS = ${SRCS:.c=.o}
 
 .PHONY: all
@@ -46,8 +48,8 @@ OBJS = ${SRCS:.c=.o}
 .PHONY: fclean
 .PHONY: re
 
-$(NAME): $(OBJS) $(LIB_NAME)
-	clang $(OBJS) $(LIB_NAME) -o $(NAME) -lm -lmlx -lXext -lX11
+$(NAME): $(OBJS) $(LIB_NAME) $(MLX_NAME)
+	clang $(OBJS) $(LIB_NAME) $(MLX_NAME) -o $(NAME) -lm -lX11 -lXext
 
 $(OBJS): %.o: %.c $(HEADERS)
 	clang $(FLAGS) -I$(HEADER_FILE) -c $< -o $@
@@ -56,15 +58,22 @@ $(LIB_NAME):
 	cd $(LIB_DIR) && make all
 	cp $(LIB_DIR)/$(LIB_NAME) .
 
+$(MLX_NAME):
+	cd $(MLX_DIR) && make all
+	cp $(MLX_DIR)/$(MLX_NAME) .
+
 all: $(NAME)
 
 clean:
 	rm -f $(OBJS)
 	rm -f $(LIB_NAME)
+	rm -f $(MLX_NAME)
 	cd $(LIB_DIR) && make clean
+	cd $(MLX_DIR) && make clean all
 
 fclean: clean
 	rm -f $(NAME)
 	cd $(LIB_DIR) && make fclean
+	cd $(MLX_DIR) && make clean all
 
 re: fclean all

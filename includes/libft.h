@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkowalsk <rkowalsk@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: rkowalsk <rkowalsk@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 13:35:05 by rkowalsk          #+#    #+#             */
-/*   Updated: 2020/02/18 18:15:25 by rkowalsk         ###   ########lyon.fr   */
+/*   Updated: 2020/11/25 14:33:47 by rkowalsk         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-char	*ft_uitoa(unsigned int n);
 int		ft_isalnum(int c);
 void	ft_bzero(void *s, size_t n);
 int		ft_isalpha(int c);
@@ -51,6 +50,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(const char *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
+char	*ft_uitoa(unsigned int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
@@ -58,5 +58,6 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_strdup(const char *src);
 int		get_next_line(int fd, char **line);
+int		ft_printf(const char *str, ...);
 
 #endif
