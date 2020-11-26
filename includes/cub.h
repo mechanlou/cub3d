@@ -9,8 +9,8 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
-# include <mlx.h>
 # include <math.h>
+# include "../mlx/mlx.h"
 # include "key.h"
 
 # define FORWARD	K_W
